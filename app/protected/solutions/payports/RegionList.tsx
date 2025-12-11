@@ -173,13 +173,50 @@ export default function RegionList() {
       />
 
       {loading ? (
-        // Skeleton loader for regions
         <div className="space-y-4">
           {Array.from({ length: 3 }).map((_, idx) => (
             <div
               key={idx}
-              className="h-32 bg-gray-200 rounded-md animate-pulse w-full"
-            />
+              className="w-full border rounded-md p-4 bg-white shadow-sm animate-pulse"
+            >
+              {/* Header skeleton */}
+              <div className="flex justify-between items-center mb-4">
+                <div className="h-6 w-48 bg-gray-200 rounded"></div>
+                <div className="flex gap-2">
+                  <div className="h-6 w-20 bg-gray-200 rounded"></div>
+                  <div className="h-6 w-20 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+
+              {/* Table skeleton */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr>
+                      {Array.from({ length: 7 }).map((_, thIdx) => (
+                        <th key={thIdx} className="p-2">
+                          <div className="h-4 bg-gray-200 rounded w-full"></div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Array.from({ length: 3 }).map((_, rowIdx) => (
+                      <tr key={rowIdx}>
+                        {Array.from({ length: 7 }).map((_, cellIdx) => (
+                          <td key={cellIdx} className="p-2">
+                            <div className="h-4 bg-gray-200 rounded w-full"></div>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Add Payment button skeleton */}
+              <div className="mt-4 h-8 w-36 bg-gray-200 rounded"></div>
+            </div>
           ))}
         </div>
       ) : regions.length === 0 ? (
