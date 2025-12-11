@@ -91,12 +91,14 @@ export function EditPaymentDialog({
         <div className="grid gap-3">
           <Input
             name="payment_method"
+            placeholder="payment_method"
             value={form.payment_method ?? ""}
             onChange={(e) => handleChange("payment_method", e.target.value)}
           />
 
           <Input
             name="payment_type"
+            placeholder="payment_type"
             value={form.payment_type ?? ""}
             onChange={(e) => handleChange("payment_type", e.target.value)}
           />
@@ -104,6 +106,7 @@ export function EditPaymentDialog({
           <div className="grid grid-cols-2 gap-2">
             <Input
               name="min_payin"
+              placeholder="min_payin"
               type="number"
               value={form.min_payin ?? ""}
               onChange={(e) =>
@@ -115,6 +118,7 @@ export function EditPaymentDialog({
             />
             <Input
               name="max_payin"
+              placeholder="max_payin"
               type="number"
               value={form.max_payin ?? ""}
               onChange={(e) =>
@@ -129,6 +133,7 @@ export function EditPaymentDialog({
           <div className="grid grid-cols-2 gap-2">
             <Input
               name="min_payout"
+              placeholder="min_payout"
               type="number"
               value={form.min_payout ?? ""}
               onChange={(e) =>
@@ -139,6 +144,7 @@ export function EditPaymentDialog({
               }
             />
             <Input
+              placeholder="max_payout"
               name="max_payout"
               type="number"
               value={form.max_payout ?? ""}
