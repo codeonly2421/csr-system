@@ -203,19 +203,25 @@ export default function DataTable({
             Array.from({ length: 5 }).map((_, idx) => (
               <TableRow key={idx}>
                 <TableCell>
-                  <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-7 w-32 bg-gray-200 rounded animate-pulse"></div>
                 </TableCell>
                 <TableCell>
-                  <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-7 w-24 bg-gray-200 rounded animate-pulse"></div>
                 </TableCell>
                 <TableCell>
-                  <div className="h-4 w-20 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-7 w-20 bg-gray-200 rounded animate-pulse"></div>
                 </TableCell>
                 <TableCell>
-                  <div className="h-4 w-48 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-7 w-48 bg-gray-200 rounded animate-pulse"></div>
                 </TableCell>
                 <TableCell>
-                  <div className="h-4 w-24 bg-gray-200 rounded animate-pulse ml-auto"></div>
+                  <div className="h-7 w-48 bg-gray-200 rounded animate-pulse"></div>
+                </TableCell>
+                <TableCell>
+                  <div className="h-7 w-48 bg-gray-200 rounded animate-pulse"></div>
+                </TableCell>
+                <TableCell>
+                  <div className="h-7 w-24 bg-gray-200 rounded animate-pulse ml-auto"></div>
                 </TableCell>
               </TableRow>
             ))
