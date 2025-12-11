@@ -150,7 +150,7 @@ export default function DataTable({
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
-
+        {/* 
         <TableBody>
           {loading ? (
             <TableRow>
@@ -158,6 +158,67 @@ export default function DataTable({
                 Loading...
               </TableCell>
             </TableRow>
+          ) : paginated.length ? (
+            paginated.map((entry) => (
+              <TableRow key={entry.id}>
+                <TableCell>{entry.channel_codes}</TableCell>
+                <TableCell>{entry.verticals}</TableCell>
+                <TableCell>{entry.geos}</TableCell>
+                <TableCell>{entry.remarks}</TableCell>
+
+                <TableCell className="flex justify-end gap-2">
+                  <EditModal
+                    entry={entry}
+                    trigger={
+                      <Button size="sm" variant="outline">
+                        <Pencil size={14} />
+                      </Button>
+                    }
+                    onSave={(updated) => onUpdate(entry.id, updated)}
+                  />
+
+                  <ConfirmModal
+                    trigger={
+                      <Button size="sm" variant="destructive">
+                        <Trash2 size={14} />
+                      </Button>
+                    }
+                    onConfirm={() => onDelete(entry.id)}
+                  />
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={5} className="text-center">
+                No entries found.
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody> */}
+
+        <TableBody>
+          {loading ? (
+            // Skeleton rows
+            Array.from({ length: 5 }).map((_, idx) => (
+              <TableRow key={idx}>
+                <TableCell>
+                  <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
+                </TableCell>
+                <TableCell>
+                  <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
+                </TableCell>
+                <TableCell>
+                  <div className="h-4 w-20 bg-gray-200 rounded animate-pulse"></div>
+                </TableCell>
+                <TableCell>
+                  <div className="h-4 w-48 bg-gray-200 rounded animate-pulse"></div>
+                </TableCell>
+                <TableCell>
+                  <div className="h-4 w-24 bg-gray-200 rounded animate-pulse ml-auto"></div>
+                </TableCell>
+              </TableRow>
+            ))
           ) : paginated.length ? (
             paginated.map((entry) => (
               <TableRow key={entry.id}>
