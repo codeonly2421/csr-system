@@ -9,11 +9,11 @@ export default function Page() {
       href: "payports/limits",
       descriptions: "Click to open",
     },
-    { title: "Transaction limits", href: "##", descriptions: "Not Available" },
-    { title: "Transaction Process", href: "##", descriptions: "Not Available" },
-    { title: "Settlement", href: "##", descriptions: "Not Available" },
-    { title: "Demo videos", href: "##", descriptions: "Not Available" },
-    { title: "Channel Status", href: "##", descriptions: "Not Available" },
+    { title: "Transaction limits", href: "", descriptions: "Not Available" },
+    { title: "Transaction Process", href: "", descriptions: "Not Available" },
+    { title: "Settlement", href: "", descriptions: "Not Available" },
+    { title: "Demo videos", href: "", descriptions: "Not Available" },
+    { title: "Channel Status", href: "", descriptions: "Not Available" },
   ];
 
   return (

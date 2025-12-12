@@ -9,14 +9,14 @@ export default function Page() {
       href: "solutions/payports",
       descriptions: "Click to open",
     },
-    { title: "Coins", href: "##", descriptions: "Not Available" },
-    { title: "Pay5", href: "##", descriptions: "Not Available" },
-    { title: "Icore", href: "##", descriptions: "Not Available" },
-    { title: "Paypro", href: "##", descriptions: "Not Available" },
-    { title: "Safety Pay", href: "##", descriptions: "Not Available" },
-    { title: "Payrock", href: "##", descriptions: "Not Available" },
-    { title: "Duk Pay", href: "##", descriptions: "Not Available" },
-    { title: "Wells Payment", href: "##", descriptions: "Not Available" },
+    { title: "Coins", href: "", descriptions: "Not Available" },
+    { title: "Pay5", href: "", descriptions: "Not Available" },
+    { title: "Icore", href: "", descriptions: "Not Available" },
+    { title: "Paypro", href: "", descriptions: "Not Available" },
+    { title: "Safety Pay", href: "", descriptions: "Not Available" },
+    { title: "Payrock", href: "", descriptions: "Not Available" },
+    { title: "Duk Pay", href: "", descriptions: "Not Available" },
+    { title: "Wells Payment", href: "", descriptions: "Not Available" },
   ];
 
   return (
