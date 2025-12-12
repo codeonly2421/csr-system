@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import type { PaymentMethod } from "@/app/protected/solutions/payports/RegionList";
+import type { PaymentMethod } from "@/app/protected/solutions/payports/limits/RegionList";
 
 interface Props {
   entry: PaymentMethod;

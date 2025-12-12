@@ -10,7 +10,7 @@ import { EditPaymentDialog } from "./edit-payment-dialog";
 import type {
   Region,
   PaymentMethod,
-} from "@/app/protected/solutions/payports/RegionList";
+} from "@/app/protected/solutions/payports/limits/RegionList";
 import { Trash2, Pencil } from "lucide-react";
 import { ConfirmModal } from "@/components/confirm-modal";
 import { toast } from "sonner";
