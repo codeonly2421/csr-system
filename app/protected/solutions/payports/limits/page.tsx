@@ -10,7 +10,7 @@ export default function PayportsPage() {
     <div className="py-10 max-w-5xl mx-auto w-full px-4">
       {/* Header / Actions */}
       <div className="flex justify-start items-center mb-6">
-        <Link href="/protected/solutions">
+        <Link href="/protected/solutions/payports">
           <Button variant="outline">Go Back</Button>
         </Link>
       </div>

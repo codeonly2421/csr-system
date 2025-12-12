@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <div className="py-10 max-w-5xl mx-auto w-full px-4">
       <div className="flex justify-start mb-6">
-        <Link href="/protected">
+        <Link href="/protected/solutions">
           <Button variant="outline">Go Back</Button>
         </Link>
       </div>
