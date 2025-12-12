@@ -92,7 +92,6 @@ export default function EntryModal({ triggerText, onSubmit }: EntryModalProps) {
               placeholder="Geos"
               value={form.geos}
               onChange={handleChange}
-              required
             />
 
             <Textarea
