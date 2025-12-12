@@ -44,9 +44,7 @@ export default function DataTable({
   const [pageSize, setPageSize] = useState(20);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
-  /** ------------------------------
-   * SEARCH FILTER
-   * ------------------------------ */
+  /** SEARCH FILTER */
   const filtered = useMemo(
     () =>
       entries.filter((entry) =>
@@ -57,9 +55,7 @@ export default function DataTable({
     [entries, search]
   );
 
-  /** ------------------------------
-   * SORTING
-   * ------------------------------ */
+  /** SORTING */
   const sorted = useMemo(() => {
     if (!sortColumn) return [...filtered].sort((a, b) => b.id - a.id);
     return [...filtered].sort((a, b) => {
@@ -71,18 +67,14 @@ export default function DataTable({
     });
   }, [filtered, sortColumn, sortDirection]);
 
-  /** ------------------------------
-   * PAGINATION
-   * ------------------------------ */
+  /** PAGINATION */
   const totalPages = pageSize === -1 ? 1 : Math.ceil(sorted.length / pageSize);
   const paginated =
     pageSize === -1
       ? sorted
       : sorted.slice((page - 1) * pageSize, page * pageSize);
 
-  /** ------------------------------
-   * BULK SELECT
-   * ------------------------------ */
+  /** BULK SELECT */
   const toggleSelect = (id: number) =>
     setSelectedIds((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
@@ -100,9 +92,7 @@ export default function DataTable({
     }
   };
 
-  /** ------------------------------
-   * BULK DELETE
-   * ------------------------------ */
+  /** BULK DELETE */
   const handleBulkDelete = async () => {
     if (!onBulkDelete) {
       toast.error("Bulk delete handler not provided");
@@ -117,9 +107,7 @@ export default function DataTable({
     }
   };
 
-  /** ------------------------------
-   * SORT TOGGLE
-   * ------------------------------ */
+  /** SORT TOGGLE */
   const toggleSort = (column: string) => {
     if (sortColumn === column) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
@@ -132,41 +120,57 @@ export default function DataTable({
   return (
     <div className="w-full space-y-4">
       {/* Top Controls */}
-      <div className="flex items-center gap-4">
-        <Input
-          placeholder="Search entries..."
-          className="w-64"
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setPage(1);
-          }}
-        />
+      <div className="flex justify-between items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Input
+            placeholder="Search entries..."
+            className="w-64"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
+          />
+          {search && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setSearch("");
+                setPage(1);
+              }}
+            >
+              Clear
+            </Button>
+          )}
+        </div>
 
-        <Select
-          onValueChange={(v) => {
-            setPageSize(Number(v));
-            setPage(1);
-          }}
-          defaultValue="20"
-        >
-          <SelectTrigger className="w-32">
-            Show {pageSize === -1 ? "All" : pageSize}
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="10">10</SelectItem>
-            <SelectItem value="20">20</SelectItem>
-            <SelectItem value="50">50</SelectItem>
-            <SelectItem value="100">100</SelectItem>
-            <SelectItem value="-1">All</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex items-center gap-2">
+          <Select
+            onValueChange={(v) => {
+              setPageSize(Number(v));
+              setPage(1);
+            }}
+            defaultValue="20"
+          >
+            <SelectTrigger className="w-32">
+              Show {pageSize === -1 ? "All" : pageSize}
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="20">20</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+              <SelectItem value="100">100</SelectItem>
+              <SelectItem value="-1">All</SelectItem>
+            </SelectContent>
+          </Select>
 
-        {selectedIds.length > 0 && (
-          <Button variant="destructive" onClick={handleBulkDelete}>
-            <Trash2 /> ({selectedIds.length})
-          </Button>
-        )}
+          {selectedIds.length > 0 && (
+            <Button variant="destructive" onClick={handleBulkDelete}>
+              <Trash2 /> ({selectedIds.length})
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Table */}
@@ -187,45 +191,25 @@ export default function DataTable({
               onClick={() => toggleSort("channel_codes")}
               className="cursor-pointer"
             >
-              Channel Codes{" "}
-              {sortColumn === "channel_codes"
-                ? sortDirection === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
+              Channel Codes
             </TableHead>
             <TableHead
               onClick={() => toggleSort("verticals")}
               className="cursor-pointer"
             >
-              Verticals{" "}
-              {sortColumn === "verticals"
-                ? sortDirection === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
+              Verticals
             </TableHead>
             <TableHead
               onClick={() => toggleSort("geos")}
               className="cursor-pointer"
             >
-              Geos{" "}
-              {sortColumn === "geos"
-                ? sortDirection === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
+              Geos
             </TableHead>
             <TableHead
               onClick={() => toggleSort("remarks")}
               className="cursor-pointer"
             >
-              Remarks{" "}
-              {sortColumn === "remarks"
-                ? sortDirection === "asc"
-                  ? "▲"
-                  : "▼"
-                : ""}
+              Remarks
             </TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>

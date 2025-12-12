@@ -155,10 +155,9 @@ export default function ChannelPage() {
 
   useEffect(() => {
     fetchEntries();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /** CREATE ENTRY */
+  /** CREATE SINGLE ENTRY */
   const handleCreate = async (form: any) => {
     const t = toast.loading("Creating entry...");
     const { error } = await supabase.from("entries").insert([form]);
@@ -169,6 +168,31 @@ export default function ChannelPage() {
     }
 
     toast.success("Entry added successfully!", { id: t });
+    await fetchEntries();
+  };
+
+  /** BULK CREATE FOR EXCEL */
+  const handleBulkCreate = async (rows: any[]) => {
+    if (!rows.length) return;
+
+    const t = toast.loading(`Importing ${rows.length} rows...`);
+
+    // Prepare data
+    const dataToInsert = rows.map((row) => ({
+      channel_codes: row.channel_codes ?? "",
+      verticals: row.verticals ?? "",
+      geos: row.geos ?? "",
+      remarks: row.remarks ?? "",
+    }));
+
+    const { error } = await supabase.from("entries").insert(dataToInsert);
+
+    if (error) {
+      toast.error("Failed to import Excel data", { id: t });
+      return;
+    }
+
+    toast.success(`${rows.length} entries imported successfully!`, { id: t });
     await fetchEntries();
   };
 
@@ -232,18 +256,7 @@ export default function ChannelPage() {
       <div className="flex justify-between items-center mb-6">
         <EntryModal triggerText="Add Data" onSubmit={handleCreate} />
 
-        <ImportExcelModal
-          onImport={async (rows) => {
-            for (const row of rows) {
-              await handleCreate({
-                channel_codes: row.channel_codes ?? "",
-                verticals: row.verticals ?? "",
-                geos: row.geos ?? "",
-                remarks: row.remarks ?? "",
-              });
-            }
-          }}
-        />
+        <ImportExcelModal onImport={handleBulkCreate} />
       </div>
 
       {/* Data Table */}
